@@ -23,7 +23,7 @@ public class NewsDisplayActivity extends Activity implements View.OnClickListene
         webView.loadUrl(newsUrl);
 
         TextView textView = (TextView) findViewById(R.id.title_text);
-        textView.setText("详情");
+        textView.setText("动态详情");
         Button back_button = (Button) findViewById(R.id.back_button);
         back_button.setOnClickListener(this);
     }
