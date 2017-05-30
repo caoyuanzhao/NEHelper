@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_titlebar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"></include>
+
+        <android.support.percent.PercentFrameLayout
+            android:id="@+id/layout_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff">
+            <Button
+                android:id="@+id/button1"
+                android:text="子网划分"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_gravity="left|top"
+                android:layout_height="160dp"
+                android:layout_width="160dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape">
+            </Button>
+            <Button
+                android:id="@+id/button2"
+                android:text="路由汇总"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_gravity="right|top"
+                android:layout_height="160dp"
+                android:layout_width="160dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape">
+            </Button>
+            <Button
+                android:id="@+id/button3"
+                android:text="命令检索"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_gravity="left|bottom"
+                android:layout_height="160dp"
+                android:layout_width="160dp"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/shape">
+            </Button>
+            <Button
+                android:id="@+id/button4"
+                android:text="相关动态"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                android:layout_gravity="right|bottom"
+                android:layout_height="160dp"
+                android:layout_width="160dp"
+                android:layout_marginBottom="60dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/shape">
+            </Button>
+        </android.support.percent.PercentFrameLayout>
+</LinearLayout>
