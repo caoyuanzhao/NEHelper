@@ -4,5 +4,58 @@
     android:layout_height="match_parent">
     <include layout="@layout/layout_titlebar"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="12"
+        android:rowCount="1">
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="子网数目"
+            android:gravity="center"
+            android:textSize="18sp"/>
+        <EditText
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="10"
+            android:id="@+id/edit_text_subnet"
+            android:layout_columnSpan="10"
+            android:layout_gravity="center_vertical"
+            android:inputType="number"
+            android:maxLength="2"
+            android:maxLines="1" />
+        <Button
+            android:id="@+id/button_submit_subnet"
+            android:text="确定"
+            android:background="#00000000"
+            android:textSize="18sp">
+        </Button>
+    </GridLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="420dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recycler_view_subnet"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_height="wrap_content"
+            android:id="@+id/summary_submit_button"
+            android:background="@drawable/ic_submit"
+            android:layout_gravity="center"
+            android:layout_width="50dp">
+        </Button>
+    </LinearLayout>
 </LinearLayout>
