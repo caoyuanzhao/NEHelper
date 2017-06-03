@@ -2,6 +2,7 @@ package edu.scse.nehelper;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.RunnableFuture;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -30,6 +33,9 @@ public class CorrelationDynamics extends Activity implements View.OnClickListene
     private NewsAdapter adapter;
     private Handler handler;
     private ListView lv;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_correlationdynamics);
@@ -61,6 +67,15 @@ public class CorrelationDynamics extends Activity implements View.OnClickListene
                 }
             }
         };
+
+        swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setColorSchemeColors(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshNews();
+            }
+        });
     }
     private void getNews(){
 
@@ -114,5 +129,27 @@ public class CorrelationDynamics extends Activity implements View.OnClickListene
                 break;
             default:break;
         }
+    }
+
+    private void refreshNews(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Thread.sleep(1000);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        newsList.removeAll(newsList);
+                        getNews();
+                        adapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+            }
+        }).start();
     }
 }
